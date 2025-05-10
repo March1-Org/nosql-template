@@ -1,12 +1,8 @@
 import { config } from 'config';
 import mongoose from 'mongoose';
 
-const connectionString = `mongodb://${config.MONGODB_HOST}:${config.MONGODB_PORT}`;
+const connectionString = `mongodb://${config.MONGO_USER}:${config.MONGO_PASSWORD}@${config.MONGO_HOST}:${config.MONGO_PORT}/${config.MONGO_DB}`;
 
-mongoose.connect(connectionString, {
-  dbName: config.MONGODB_DB,
-  auth: {
-    username: config.MONGODB_USER,
-    password: config.MONGODB_PASSWORD,
-  },
-});
+export async function connect() {
+  await mongoose.connect(connectionString);
+}
