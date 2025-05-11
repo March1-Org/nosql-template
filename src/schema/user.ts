@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const schema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   id: Number,
   name: String,
   age: Number,
